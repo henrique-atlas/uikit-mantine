@@ -6,3 +6,4 @@ Links:
 
 - [Mantine documentation](https://mantine.dev/)
 - [Vite documentation](https://vitejs.dev/)
+- [Storybook](https://spigelli.github.io/mantine-storybook/?path=/story/button--demo-compact)
