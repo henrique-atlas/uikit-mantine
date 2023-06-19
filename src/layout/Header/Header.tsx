@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { createStyles, Header, Container, Group, Burger, rem } from '@mantine/core';
+import { createStyles, Header, Container, Group, Burger, rem, Avatar } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
+import { IconBell, IconSearch } from '@tabler/icons-react';
 import Logo from '../../assets/logo_sm_white.svg';
 // import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles((theme) => ({
   header: {
     display: 'flex',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
     backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
@@ -73,13 +74,17 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
   ));
 
   return (
-    <Header height={60} mb={120}>
+    <Header height={60}>
       <Container className={classes.header}>
-        <img src={Logo} className="mr-3 h-6 sm:h-9" alt="logo" />
+        <img src={Logo} alt="logo" />
         {/* <Logo /> */}
-        <Group spacing={5} className={classes.links}>
+        <Group spacing={5} ml="1rem" className={classes.links}>
           {items}
         </Group>
+
+        <IconSearch size={18} />
+        <IconBell size={18} />
+        <Avatar src="avatar.png" alt="it's me" />
 
         <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
       </Container>

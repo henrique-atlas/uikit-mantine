@@ -1,17 +1,9 @@
 import { useState } from 'react';
-import { createStyles, Navbar, Group, Code, getStylesRef, rem } from '@mantine/core';
+import { createStyles, Navbar, getStylesRef, rem, Avatar, Container, Center, Text } from '@mantine/core';
 import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
   IconSwitchHorizontal,
   IconLogout,
 } from '@tabler/icons-react';
-// import { MantineLogo } from '@mantine/ds';
 
 const useStyles = createStyles((theme) => ({
   navbar: {
@@ -29,6 +21,9 @@ const useStyles = createStyles((theme) => ({
 
   header: {
     paddingBottom: theme.spacing.md,
+    display: 'flex',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginBottom: `calc(${theme.spacing.md} * 1.5)`,
     borderBottom: `${rem(1)} solid ${theme.fn.lighten(
       theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background!,
@@ -36,9 +31,18 @@ const useStyles = createStyles((theme) => ({
     )}`,
   },
 
+  main: {
+    paddingTop: theme.spacing.xs,
+    marginTop: theme.spacing.xs,
+    borderTop: `${rem(1)} solid ${theme.fn.lighten(
+      theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background!,
+      0.1
+    )}`,
+  },
+
   footer: {
-    paddingTop: theme.spacing.md,
-    marginTop: theme.spacing.md,
+    paddingTop: theme.spacing.xs,
+    marginTop: theme.spacing.xs,
     borderTop: `${rem(1)} solid ${theme.fn.lighten(
       theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background!,
       0.1
@@ -48,6 +52,7 @@ const useStyles = createStyles((theme) => ({
   link: {
     ...theme.fn.focusStyles(),
     display: 'flex',
+    justifyContent: 'space-between',
     alignItems: 'center',
     textDecoration: 'none',
     fontSize: theme.fontSizes.sm,
@@ -85,13 +90,14 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: '', label: 'Notifications', icon: IconBellRinging },
-  { link: '', label: 'Billing', icon: IconReceipt2 },
-  { link: '', label: 'Security', icon: IconFingerprint },
-  { link: '', label: 'SSH Keys', icon: IconKey },
-  { link: '', label: 'Databases', icon: IconDatabaseImport },
-  { link: '', label: 'Authentication', icon: Icon2fa },
-  { link: '', label: 'Other Settings', icon: IconSettings },
+  { link: '', label: 'Region', info: 'North America' },
+  { link: '', label: 'Language', info: 'English' },
+  { link: '', label: 'Currency', info: 'USD' },
+  { link: '', label: 'Terms', info: 'NEt20' },
+  { link: '', label: 'Payment Type', info: 'xxx-xx' },
+  { link: '', label: 'Countries', info: '34' },
+  { link: '', label: 'WSE', info: '05' },
+  { link: '', label: 'Contractors', info: '22' },
 ];
 
 export function NavbarSimpleColored() {
@@ -101,25 +107,31 @@ export function NavbarSimpleColored() {
   const links = data.map((item) => (
     <a
       className={cx(classes.link, { [classes.linkActive]: item.label === active })}
-      href={item.link}
       key={item.label}
+      href={item.link}
       onClick={(event) => {
         event.preventDefault();
         setActive(item.label);
       }}
     >
-      <item.icon className={classes.linkIcon} stroke={1.5} />
       <span>{item.label}</span>
+      <span>{item.info}</span>
     </a>
   ));
 
   return (
     <Navbar height={700} width={{ sm: 300 }} p="md" className={classes.navbar}>
-      <Navbar.Section grow>
-        <Group className={classes.header} position="apart">
-          {/* <MantineLogo size={28} inverted /> */}
-          <Code className={classes.version}>v3.1.2</Code>
-        </Group>
+      <Navbar.Section>
+        <Container>
+          <Center>
+            <Avatar size={92} />
+          </Center>
+          <Center>Compoany</Center>
+          <Text>45500 Fremont Blvd, CA 94538, United States</Text>
+        </Container>
+      </Navbar.Section>
+
+      <Navbar.Section grow className={classes.main}>
         {links}
       </Navbar.Section>
 
