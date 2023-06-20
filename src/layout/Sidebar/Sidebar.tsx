@@ -6,18 +6,9 @@ import {
 } from '@tabler/icons-react';
 
 const useStyles = createStyles((theme) => ({
-  navbar: {
-    backgroundColor: theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background,
-  },
-
-  version: {
-    backgroundColor: theme.fn.lighten(
-      theme.fn.variant({ variant: 'filled', color: theme.primaryColor }).background!,
-      0.1
-    ),
-    color: theme.white,
-    fontWeight: 700,
-  },
+  // navbar: {
+  //   backgroundColor: theme.fn.variant({ variant: 'filled', color: theme.white }).background,
+  // },
 
   header: {
     paddingBottom: theme.spacing.md,
@@ -56,8 +47,8 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     textDecoration: 'none',
     fontSize: theme.fontSizes.sm,
-    color: theme.white,
-    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+    color: '#8083A3',
+    padding: `${theme.spacing.xxs} ${theme.spacing.sm}`,
     borderRadius: theme.radius.sm,
     fontWeight: 500,
 
@@ -67,6 +58,10 @@ const useStyles = createStyles((theme) => ({
         0.1
       ),
     },
+  },
+
+  linkInfo: {
+    color: '#171721',
   },
 
   linkIcon: {
@@ -115,7 +110,7 @@ export function NavbarSimpleColored() {
       }}
     >
       <span>{item.label}</span>
-      <span>{item.info}</span>
+      <span className={cx(classes.link, classes.linkInfo)}>{item.info}</span>
     </a>
   ));
 
