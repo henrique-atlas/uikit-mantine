@@ -9,7 +9,6 @@ const useStyles = createStyles((theme) => ({
   // navbar: {
   //   backgroundColor: theme.fn.variant({ variant: 'filled', color: theme.white }).background,
   // },
-
   header: {
     paddingBottom: theme.spacing.md,
     display: 'flex',
